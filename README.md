@@ -1,4 +1,4 @@
-# CodePlay Edtech MERN Application
+# CodeBlink Edtech MERN Application
 
 Welcome to the CodeBlink EdTech Platform Repository!
 
