@@ -11,6 +11,7 @@ import Signup from "./pages/Signup"
 import ForgotPassword from "./pages/ForgotPassword"
 import UpdatePassword from "./pages/UpdatePassword"
 import VerifyEmail from "./pages/VerifyEmail"
+import About from "./pages/About"
 
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+
         <Route
           path="login"
           element={
@@ -61,6 +64,7 @@ function App() {
             </OpenRoute>
           }
         />
+        
 
     
      </Routes>
