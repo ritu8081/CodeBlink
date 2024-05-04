@@ -172,7 +172,7 @@ const Footer = () => {
             })}
           </div>
 
-          <div className="text-center">Made with ❤️ || CodeBlink</div>
+          <div className="text-center">Made with ❤️ || CodePlay</div>
         </div>
       </div>
     </div>
