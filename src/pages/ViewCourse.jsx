@@ -12,7 +12,7 @@ import {
   setTotalNoOfLectures,
 } from "../slices/viewCourseSlice"
 
-export default function ViewCourse() {
+ function ViewCourse() {
   const { courseId } = useParams()
   const { token } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
@@ -48,3 +48,5 @@ export default function ViewCourse() {
     </>
   )
 }
+
+export default ViewCourse;

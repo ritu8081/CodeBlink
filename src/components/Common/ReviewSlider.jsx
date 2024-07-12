@@ -3,6 +3,7 @@ import ReactStars from "react-rating-stars-component"
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"
 
+
 // Import Swiper styles
 import "swiper/css"
 import "swiper/css/free-mode"

@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react"
-import { useDropzone } from "react-dropzone"
-import { FiUploadCloud } from "react-icons/fi"
-import { useSelector } from "react-redux"
+import React, { useEffect, useRef, useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { FiUploadCloud } from "react-icons/fi";
+import { useSelector } from "react-redux";
+import ReactPlayer from "react-player";
 
-import "video-react/dist/video-react.css"
-import { Player } from "video-react"
+import "video-react/dist/video-react.css";
 
 export default function Upload({
   name,
@@ -16,46 +16,43 @@ export default function Upload({
   viewData = null,
   editData = null,
 }) {
-  const { course } = useSelector((state) => state.course)
-  const [selectedFile, setSelectedFile] = useState(null)
+  const { course } = useSelector((state) => state.course);
+  const [selectedFile, setSelectedFile] = useState(null);
   const [previewSource, setPreviewSource] = useState(
     viewData ? viewData : editData ? editData : ""
-  )
-  const inputRef = useRef(null)
+  );
+  const inputRef = useRef(null);
 
   const onDrop = (acceptedFiles) => {
-    const file = acceptedFiles[0]
+    const file = acceptedFiles[0];
     if (file) {
-      previewFile(file)
-      setSelectedFile(file)
+      previewFile(file);
+      setSelectedFile(file);
     }
-  }
+  };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: !video
-      ? { "image/*": [".jpeg", ".jpg", ".png"] }
-      : { "video/*": [".mp4"] },
+    accept: video ? "video/mp4" : "image/*",
     onDrop,
-  })
+  });
 
   const previewFile = (file) => {
-    // console.log(file)
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
     reader.onloadend = () => {
-      setPreviewSource(reader.result)
-    }
-  }
+      setPreviewSource(reader.result);
+    };
+  };
 
   useEffect(() => {
-    register(name, { required: true })
+    register(name, { required: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [register])
+  }, [register]);
 
   useEffect(() => {
-    setValue(name, selectedFile)
+    setValue(name, selectedFile);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedFile, setValue])
+  }, [selectedFile, setValue]);
 
   return (
     <div className="flex flex-col space-y-2">
@@ -69,22 +66,27 @@ export default function Upload({
       >
         {previewSource ? (
           <div className="flex w-full flex-col p-6">
-            {!video ? (
+            {video ? (
+              <ReactPlayer
+                url={previewSource}
+                width="100%"
+                height="100%"
+                controls
+              />
+            ) : (
               <img
                 src={previewSource}
                 alt="Preview"
                 className="h-full w-full rounded-md object-cover"
               />
-            ) : (
-              <Player aspectRatio="16:9" playsInline src={previewSource} />
             )}
             {!viewData && (
               <button
                 type="button"
                 onClick={() => {
-                  setPreviewSource("")
-                  setSelectedFile(null)
-                  setValue(name, null)
+                  setPreviewSource("");
+                  setSelectedFile(null);
+                  setValue(name, null);
                 }}
                 className="mt-3 text-richblack-400 underline"
               >
@@ -106,10 +108,12 @@ export default function Upload({
               <span className="font-semibold text-yellow-50">Browse</span> a
               file
             </p>
-            <ul className="mt-10 flex list-disc justify-between space-x-12 text-center  text-xs text-richblack-200">
-              <li>Aspect ratio 16:9</li>
-              <li>Recommended size 1024x576</li>
-            </ul>
+            {video && (
+              <ul className="mt-10 flex list-disc justify-between space-x-12 text-center text-xs text-richblack-200">
+                <li>Aspect ratio 16:9</li>
+                <li>Recommended size 1024x576</li>
+              </ul>
+            )}
           </div>
         )}
       </div>
@@ -119,5 +123,5 @@ export default function Upload({
         </span>
       )}
     </div>
-  )
+  );
 }
