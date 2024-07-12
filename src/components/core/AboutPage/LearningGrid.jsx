@@ -1,5 +1,5 @@
 import React from "react";
-import HighlightText from "../HomePage/HighlightText";
+import HighlightText from "../HomePage/HighLightText";
 import CTAButton from "../../../components/core/HomePage/Button";
 
 const LearningGridArray = [
