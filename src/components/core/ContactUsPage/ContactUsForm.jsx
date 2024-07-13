@@ -94,9 +94,9 @@ const ContactUsForm = () => {
           className="form-style"
           {...register("email", { required: true })}
         />
-        {errors.email && (
+        {errors.email  && (
           <span className="-mt-1 text-[12px] text-yellow-100">
-            Please enter your Email address.
+            Please enter your Email address ....
           </span>
         )}
       </div>
