@@ -15,7 +15,7 @@ const contactDetails = [
     heading: "Visit us",
     description: "Come and say hello at our office HQ.",
     details:
-      "CodeBlink Office , Pune-466542",
+      "CodeBlink Office , Pune-452153",
   },
   {
     icon: "IoCall",
