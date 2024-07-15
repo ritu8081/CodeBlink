@@ -104,7 +104,7 @@ const VideoDetails = () => {
         <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
           <ReactPlayer
             ref={playerRef}
-            url={videoData._id} // Use videoUrl from videoData
+            url={"https://youtu.be/Vi9bxu-M-ag?si=S-pjaXyq7Vaet8ry"} // Use videoUrl from videoData
             className="absolute top-0 left-0"
             width="100%"
             height="100%"
